@@ -1,0 +1,24 @@
+﻿@model IEnumerable<WebApplication1.Models.Gig>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div> 
+        <table>
+            <tr><td>Id</td><td>Nazwa</td></tr>
+            @foreach (var gig in Model)
+            {
+                <tr><td>@gig.id</td><td>@gig.name</td></tr>
+            }
+        </table>
+    </div>
+</body>
+</html>

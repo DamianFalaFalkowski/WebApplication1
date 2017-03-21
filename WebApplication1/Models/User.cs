@@ -13,6 +13,7 @@ namespace WebApplication1.Models
         public string last_name { get; set; }
         public string full_name { get { return first_name + "" + last_name; } }
         public string hash_password { get; set; }
+        public string email { get; set; }
     }
 
     public class UserDBCtxt : DbContext
