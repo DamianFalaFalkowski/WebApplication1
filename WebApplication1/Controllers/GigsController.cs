@@ -23,5 +23,7 @@ namespace WebApplication1.Controllers
                 return View(database.Gigs.ToList());
             }            
         }
+
+
     }
 }
