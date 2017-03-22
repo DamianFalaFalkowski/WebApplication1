@@ -13,8 +13,8 @@ namespace WebApplication1.Models
         public int user_id { get; set; }
     }
 
-    public class BookingDBCtxt : DbContext
-    {
-        public List<Booking> Bookings { get; set; }
-    }
+    //public class BookingDBCtxt : DbContext
+    //{
+    //    public List<Booking> Bookings { get; set; }
+    //}
 }

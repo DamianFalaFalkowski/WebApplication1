@@ -9,21 +9,45 @@ namespace WebApplication1.Controllers
 {
     public class GigsController : Controller
     {
-        private GigDBCtxt database = new GigDBCtxt();
+        private MyDB database = new MyDB();
 
         // GET: Gigs
         public ActionResult Index()
         {
-            if (database.Gigs==null)
-            {
-                return View(new List<Gig>() { });
-            }
-            else
-            {
-                return View(database.Gigs.ToList());
-            }            
+            return View(database.Gigs.ToList());                        
         }
 
+        // GET: /Gigs/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
 
+        public ActionResult Show(int id)
+        {
+            Gig g = database.Gigs.Where(x => x.id == id).First();
+            return View(g);
+        }
+
+        // POST: /Cars/Create
+        [HttpPost]
+        //przesyłane wraz z POST, zabezpiecza przed złośliwą podmianą danych
+        [ValidateAntiForgeryToken]
+        //tutaj sprzężamy nasze pola z formularza z polami z modelu
+        public ActionResult Create([Bind(Include = "id,name,seats,gig_date,description")] Gig gig)
+        {
+            //sprawdzamy czy wystąpił jakiś błąd, np. błędny typ danych w formualrzu
+            if (ModelState.IsValid)
+            {
+                //dodanie koncertu
+                database.Gigs.Add(gig);
+                //zapsiane zmian
+                database.SaveChanges();
+                //przekierowanie do strony o akcji Index
+                return RedirectToAction("Index");
+            }
+            //jeśli ModelState.IsValid wracamy z powrotem do formularza
+            return View(gig);
+        }
     }
 }

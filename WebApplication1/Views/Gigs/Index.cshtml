@@ -13,11 +13,17 @@
 <body>
     <div> 
         <table>
-            <tr><td>Id</td><td>Nazwa</td></tr>
+            <tr><td>Id</td><td>Nazwa</td><td>Miejsc</td><td>Data</td></tr>
 
             @foreach (var gig in Model)
             {
-                <tr><td>@gig.id</td><td>@gig.name</td></tr>
+                <tr>
+                    <td>@gig.id</td>
+                    <td>@gig.name</td>
+                    <td>@gig.seats</td>
+                    <td>@String.Format("{0:D}", gig.gig_date);</td>
+                    <td>@Html.ActionLink("Szczegóły", "Show/" + gig.id.ToString(), "Gigs")</td>
+            </tr>
             }
         </table>
     </div>

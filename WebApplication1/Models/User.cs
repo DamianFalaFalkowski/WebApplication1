@@ -16,8 +16,8 @@ namespace WebApplication1.Models
         public string email { get; set; }
     }
 
-    public class UserDBCtxt : DbContext
-    {
-        public List<User> Users { get; set; }
-    }
+    //public class UserDBCtxt : DbContext
+    //{
+    //    public List<User> Users { get; set; }
+    //}
 }

@@ -16,8 +16,8 @@ namespace WebApplication1.Models
         public bool passed { get { return DateTime.Now > gig_date; } }
     }
 
-    public class GigDBCtxt : DbContext
-    {
-        public List<Gig> Gigs { get; set; }
-    }
+    //public class GigDBCtxt : DbContext
+    //{
+    //    public DbSet<Gig> Gigs { get; set; }
+    //}
 }
