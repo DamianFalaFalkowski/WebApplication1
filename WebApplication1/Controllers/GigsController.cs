@@ -23,7 +23,15 @@ namespace WebApplication1.Controllers
             return View();
         }
 
+        // GET: /Gigs/Show/id
         public ActionResult Show(int id)
+        {
+            Gig g = database.Gigs.Where(x => x.id == id).First();
+            return View(g);
+        }
+
+        // GET: /Gigs/Edit/id
+        public ActionResult Edit(int id)
         {
             Gig g = database.Gigs.Where(x => x.id == id).First();
             return View(g);
@@ -34,11 +42,12 @@ namespace WebApplication1.Controllers
         //przesyłane wraz z POST, zabezpiecza przed złośliwą podmianą danych
         [ValidateAntiForgeryToken]
         //tutaj sprzężamy nasze pola z formularza z polami z modelu
-        public ActionResult Create([Bind(Include = "id,name,seats,gig_date,description")] Gig gig)
+        public ActionResult Create([Bind(Include = "id,name,seats,gig_date,description,seat_price")] Gig gig)
         {
             //sprawdzamy czy wystąpił jakiś błąd, np. błędny typ danych w formualrzu
             if (ModelState.IsValid)
             {
+                gig.seats_left = gig.seats;
                 //dodanie koncertu
                 database.Gigs.Add(gig);
                 //zapsiane zmian
@@ -49,5 +58,7 @@ namespace WebApplication1.Controllers
             //jeśli ModelState.IsValid wracamy z powrotem do formularza
             return View(gig);
         }
+
+        
     }
 }

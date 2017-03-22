@@ -159,6 +159,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Gigs1Controller.cs" />
     <Compile Include="Controllers\GigsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -236,6 +237,11 @@
     <Content Include="Views\Gigs\Index.cshtml" />
     <Content Include="Views\Gigs\Create.cshtml" />
     <Content Include="Views\Gigs\Show.cshtml" />
+    <Content Include="Views\Gigs1\Create.cshtml" />
+    <Content Include="Views\Gigs1\Delete.cshtml" />
+    <Content Include="Views\Gigs1\Details.cshtml" />
+    <Content Include="Views\Gigs1\Edit.cshtml" />
+    <Content Include="Views\Gigs1\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
