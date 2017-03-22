@@ -20,6 +20,19 @@ namespace WebApplication1.Controllers
             return View(db.Gigs.ToList());
         }
 
+        [HttpPost]
+        public ActionResult Index(string name)
+        {
+            var gigs = from i in db.Gigs
+                       select i;
+            
+            gigs = from i in db.Gigs
+                   where i.name.ToLower().Contains(name.ToLower())
+                   select i;          
+
+            return View(gigs.ToList());
+        }
+
         // GET: Gigs1/Details/5
         public ActionResult Details(int? id)
         {
@@ -42,8 +55,6 @@ namespace WebApplication1.Controllers
         }
 
         // POST: Gigs1/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,name,seats,seats_left,gig_date,description,seat_price")] Gig gig)
@@ -74,8 +85,6 @@ namespace WebApplication1.Controllers
         }
 
         // POST: Gigs1/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id,name,seats,seats_left,gig_date,description,seat_price")] Gig gig)
